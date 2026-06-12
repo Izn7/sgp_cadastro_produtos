@@ -4,7 +4,7 @@ const API_SALVAR = 'http://localhost:8012/produtos/gravar';
 const API_BUSCAR_ID = 'http://localhost:8012/produtos';
 const API_DELETAR = 'http://localhost:8012/produtos/deletar';
 const API_ATUALIZAR = 'http://localhost:8012/produtos/atualizar';
-const API_BUSCAR_TODOS
+const API_BUSCAR_TODOS = "http"
 
 // Variável de controle
 let editandoId = null;
