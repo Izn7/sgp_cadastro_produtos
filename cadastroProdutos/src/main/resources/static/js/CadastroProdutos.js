@@ -1,9 +1,10 @@
 // Chamando API
-const API_BUSCAR_TODOS = 'http://localhost:8012/produtos/acharTodos';
+const API_BUSCAR_TODAS_PECAS = 'http://localhost:8012/produtos/acharTodos';
 const API_SALVAR = 'http://localhost:8012/produtos/gravar';
 const API_BUSCAR_ID = 'http://localhost:8012/produtos';
 const API_DELETAR = 'http://localhost:8012/produtos/deletar';
 const API_ATUALIZAR = 'http://localhost:8012/produtos/atualizar';
+const API_BUSCAR_TODOS
 
 // Variável de controle
 let editandoId = null;
@@ -11,7 +12,7 @@ let editandoId = null;
 // Buscar todos os produtos
 async function buscarProdutos() {
 
-    const response = await fetch(API_BUSCAR_TODOS, {
+    const response = await fetch(API_BUSCAR_TODAS_PECAS, {
         method: 'GET'
     });
 
