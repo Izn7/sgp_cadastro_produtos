@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SGP - Cadastro de Peça</title>
+    <link rel="stylesheet" href="css/CadastroProdutos.css">
+</head>
+<body>
+
+<div class="container-sgp">
+
+
+<header class="header-sgp">
+    <img src="img/LOGO SGP.png" alt="SGP" class="logo-min">
+</header>
+
+<div class="page-title-block">
+    <h1>Inclusão de Novos Itens</h1>
+    <p>Preencha os dados técnicos e mercadológicos para disponibilizar o componente no sistema.</p>
+</div>
+
+<section class="card-sgp">
+
+    <h2>Dados da Peça</h2>
+
+    
+    <form onsubmit="event.preventDefault(); cadastrarProdutos();">
+
+        <!-- Primeira linha -->
+        <div class="row-form">
+
+            <div class="form-group col-4">
+                <label for="sku">SKU / Código Único *</label>
+                <input type="text" id="sku" class="input-control" required>
+            </div>
+
+            <div class="form-group col-8">
+                <label for="descricao">Descrição Completa da Peça *</label>
+                <input type="text" id="descricao" class="input-control" required>
+            </div>
+
+        </div>
+
+        <!-- Segunda linha -->
+        <div class="row-form">
+
+            <div class="form-group col-4">
+                <label for="marca">Marca / Fabricante</label>
+                <input type="text" id="marca" class="input-control">
+            </div>
+
+            <div class="form-group col-4">
+                <label for="categoria">Categoria *</label>
+                <select id="categoria" class="input-control" required>
+                    <option value="">Selecione...</option>
+                    <option value="Motor">Motor</option>
+                    <option value="Suspensão">Suspensão</option>
+                    <option value="Freios">Freios</option>
+                    <option value="Elétrica">Elétrica</option>
+                </select>
+            </div>
+
+            <div class="form-group col-4">
+                <label for="peso">Peso (Kg) *</label>
+                <input type="number" step="0.01" id="peso" class="input-control" required>
+            </div>
+
+        </div>
+
+        <!-- Terceira linha -->
+        <div class="row-form">
+
+            <div class="form-group col-3">
+                <label for="precoCusto">Preço de Custo (R$) *</label>
+                <input type="number" id="precoCusto" step="0.01" class="input-control" required>
+            </div>
+
+            <div class="form-group col-3">
+                <label for="precoVenda">Preço de Venda (R$) *</label>
+                <input type="number" id="precoVenda" step="0.01" class="input-control" required>
+            </div>
+
+            <div class="form-group col-3">
+                <label for="estoqueMin">Estoque Mínimo *</label>
+                <input type="number" id="estoqueMin" class="input-control" required>
+            </div>
+
+            <div class="form-group col-3">
+                <label for="estoqueMax">Estoque Máximo *</label>
+                <input type="number" id="estoqueMax" class="input-control" required>
+            </div>
+
+        </div>
+
+        <!-- Quarta linha -->
+        <div class="row-form">
+
+            <div class="form-group col-4">
+                <label>
+                    <input type="checkbox" id="ativo">
+                    Produto Ativo
+                </label>
+            </div>
+
+        </div>
+
+        <div class="btn-action-group">
+            <button type="reset" class="btn-secundario">
+                Descartar
+            </button>
+
+            <button type="submit">
+                Salvar Registro
+            </button>
+        </div>
+
+    </form>
+
+</section>
+
+<!-- TABELA DE PRODUTOS -->
+<section class="card-sgp">
+
+    <h2>Produtos Cadastrados</h2>
+
+    <table width= 100% border="1">
+
+        <thead>
+            <tr>
+                <th>SKU</th>
+                <th>Descrição</th>
+                <th>Marca</th>
+                <th>Custo</th>
+                <th>Venda</th>
+                <th>Peso</th>
+                <th>Estoque Min</th>
+                <th>Estoque Max</th>
+                <th>Ativo</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+
+        <tbody id="tabelaProdutos">
+
+        </tbody>
+
+    </table>
+
+</section>
+
+
+</div>
+
+<script src="js/CadastroProdutos.js"></script>
+
+<script>
+    window.onload = function () {
+        buscarProdutos();
+    };
+</script>
+
+</body>
+</html>
