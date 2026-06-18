@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,6 +22,7 @@ import br.com.sgp.cadastroProdutos.repository.ProdutosRepository;
 
 @RestController
 @RequestMapping("/produtos")
+@CrossOrigin(origins = "*")
 public class ProdutosController {
 
 		@Autowired
@@ -68,6 +70,17 @@ public class ProdutosController {
 						return "Não Deletado";
 					}
 
-
+              @GetMapping("/filtrar/{sku}/{descricao}/{categoria}/{ativo}")
+              @ResponseStatus(HttpStatus.OK)
+              public List<ProdutosEntity> Filtrar(@PathVariable String sku, @PathVariable String descricao, @PathVariable String categoria, @PathVariable Boolean ativo){
+            	  return produtosRepository.findBySkuOrDescricaoOrCategoriaOrAtivo(sku, descricao, categoria, ativo);
+            			  
+              }
+              
+              @GetMapping("/buscaDesc/{descricao}")
+              @ResponseStatus(HttpStatus.OK)
+              public List<ProdutosEntity> BuscarPorDescricao (@PathVariable String descricao){
+            	  return produtosRepository.findByDescricao(descricao);
+              }
 	
 }

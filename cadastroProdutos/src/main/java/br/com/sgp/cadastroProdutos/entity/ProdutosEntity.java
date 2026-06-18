@@ -34,6 +34,8 @@ public class ProdutosEntity implements Serializable{
 	
 	private String marca;
 	
+	private long idFornecedor;
+	
 	@Column(nullable = false)
 	private float precoCusto;
 	
@@ -52,6 +54,18 @@ public class ProdutosEntity implements Serializable{
 	@Column(nullable = false)
 	private boolean ativo;
 
+	
+
+	
+
+	public long getIdFornecedor() {
+		return idFornecedor;
+	}
+
+	public void setIdFornecedor(long idFornecedor) {
+		this.idFornecedor = idFornecedor;
+	}
+
 	public long getId() {
 		return id;
 	}
@@ -59,6 +73,8 @@ public class ProdutosEntity implements Serializable{
 	public void setId(long id) {
 		this.id = id;
 	}
+
+	
 
 	public String getSku() {
 		return sku;
@@ -144,6 +160,8 @@ public class ProdutosEntity implements Serializable{
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
+
+	
 	
 	
 	

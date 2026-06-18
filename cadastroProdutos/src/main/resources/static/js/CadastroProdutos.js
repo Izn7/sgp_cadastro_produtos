@@ -4,10 +4,33 @@ const API_SALVAR = 'http://localhost:8012/produtos/gravar';
 const API_BUSCAR_ID = 'http://localhost:8012/produtos';
 const API_DELETAR = 'http://localhost:8012/produtos/deletar';
 const API_ATUALIZAR = 'http://localhost:8012/produtos/atualizar';
-const API_BUSCAR_TODOS = "http"
+const API_BUSCAR_TODOS_FORNECEDORES = 'http://192.168.10.84:8011/Fornecedores/listarTodos';
 
 // Variável de controle
 let editandoId = null;
+
+
+
+async function carregarDadosSelectFornecedores() {
+
+const response = await fetch( API_BUSCAR_TODOS_FORNECEDORES);
+const fornecedores= await response.json();
+console.log(fornecedores);
+const select = document.getElementById('Fornecedor');
+
+select.innerHTML = '';
+
+
+fornecedores.forEach(item => {
+const option = document.createElement('option');
+option.value = item.id;
+option.textContent = item.nomeFantasia;
+select.appendChild(option);
+});
+
+}
+
+
 
 // Buscar todos os produtos
 async function buscarProdutos() {
@@ -143,4 +166,39 @@ async function editar(id) {
     document.getElementById("ativo").checked = produto.ativo;
 
 }
+
+function validarFornecedor() {
+
+    let fornecedor = document.getElementById("Fornecedor");
+   
+    if (!fornecedor || fornecedor === "null") {
+        // Redireciona para a página de login
+        window.location.href = "CadastroProdutos.html";
+        return false;
+    }
+
+    return true;
+}
+
+function validarProdutos() {
+
+	let produtos = document.getElementById("tabelaProdutos");
+
+
+if (!produtos || produtos === "null") {
+        // Redireciona para a página de login
+        window.location.href = "CadastroProdutos.html";
+        return false;
+    }
+
+    return true;
+};
+
+
+document.addEventListener("DOMContentLoaded",()=>{
+	buscarProdutos();
+	carregarDadosSelectFornecedores();
+})
+
+
 
