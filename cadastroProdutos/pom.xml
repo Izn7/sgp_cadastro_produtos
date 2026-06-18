@@ -92,8 +92,13 @@
 	<artifactId>spring-boot-starter-test</artifactId>
 	<scope>test</scope>
 	</dependency>
-    
-    
+
+
+    <dependency>
+    	<groupId>br.com.Aprendendo5</groupId>
+    	<artifactId>2ptsForFree</artifactId>
+    	<version>0.0.1-SNAPSHOT</version>
+    </dependency>
   </dependencies>
 
   <build>
